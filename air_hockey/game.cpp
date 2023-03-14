@@ -63,8 +63,8 @@ void TinyFootball::hit_ball(int type)
 
 				while (pow(MAX_SPEED, 2) < pow(ball.xs, 2) + pow(ball.ys, 2))
 				{
-					ball.xs *= 0.98;
-					ball.ys *= 0.98;
+					ball.xs *= 0.6;
+					ball.ys *= 0.6;
 				}
 			}
 			ball.x += ball.xs;
