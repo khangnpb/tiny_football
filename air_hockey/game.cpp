@@ -25,10 +25,10 @@ void TinyFootball::begin_pos()
 
 	_pieces[1] = { tbot, _pieces[1].score, wid - 50, hei / 2, wid - 50, hei / 2, 0, 0 };
 	_pieces[3] = { tbot, _pieces[3].score, wid + 50, hei / 2, wid + 50, hei / 2, 0, 0 };
-	_pieces[5] = { t2, _pieces[5].score, wid , hei / 2 - 50, wid , hei / 2 - 50, 0, 0 };
+	_pieces[5] = { tbot, _pieces[5].score, wid , hei / 2 - 50, wid , hei / 2 - 50, 0, 0 };
 	_pieces[2] = { tbot, _pieces[2].score, wid - 50, hei + hei / 2, wid - 50, hei + hei / 2, 0, 0 };
 	_pieces[4] = { tbot, _pieces[4].score, wid + 50,hei + hei / 2, wid + 50, hei + hei / 2, 0, 0 };
-	_pieces[6] = { t1,_pieces[6].score, wid, hei + hei / 2 + 50, wid, hei + hei / 2 + 50, 0, 0 };
+	_pieces[6] = { tbot, _pieces[6].score, wid, hei + hei / 2 + 50, wid, hei + hei / 2 + 50, 0, 0 };
 	_pieces[0] = { tball ,0, wid + 2, hei, wid + 2, hei, 0, 0 };
 }
 
@@ -173,58 +173,99 @@ void TinyFootball::extrude()
 void TinyFootball::confines(int type)
 {
 	piece& bat = _pieces[type];
-
-	/*if (  bat.y < HEIGHT / 2 - 1)
-		bat.y = HEIGHT / 2 - 1;
-	if (type == 5 && bat.y > HEIGHT / 2 - SIZE_BAT)
-		bat.y = HEIGHT / 2 - SIZE_BAT;*/
+	//left player
 	if (type == 1 || type == 2) {
-		if (bat.x > (WIDTH - SIZE_BAT - 40) / 3 - 20)
+		if (bat.x > (WIDTH - SIZE_BAT / 2))
 		{
 			//_lib->play_sound(board);
-			bat.x = (WIDTH - SIZE_BAT - 40) / 3 - 20;
+			bat.x = (WIDTH - SIZE_BAT / 2);
 		}
-		if (bat.x < 20)
+		if (bat.x < WID_BORDER + (SIZE_BAT / 2))
 		{
 			//_lib->play_sound(board);
-			bat.x = 20;
+			bat.x = WID_BORDER + (SIZE_BAT / 2);
 		}
-	}
-	else if (type == 5 || type == 6) {
-		if (bat.x > 2 * (WIDTH - SIZE_BAT - 40) / 3 + 20)
+		if (bat.y > HEIGHT - (SIZE_BAT / 2) - HEI_BORDER)
 		{
 			//_lib->play_sound(board);
-			bat.x = 2 * (WIDTH - SIZE_BAT - 40) / 3 + 20;
+			bat.y = HEIGHT - (SIZE_BAT) / 2 - HEI_BORDER;
 		}
-		if (bat.x < (WIDTH - SIZE_BAT - 40) / 3 + 20)
+		if (bat.y < (SIZE_BAT / 2) + HEI_BORDER)
 		{
 			//_lib->play_sound(board);
-			bat.x = (WIDTH - SIZE_BAT - 40) / 3 + 20;
+			bat.y = (SIZE_BAT / 2) + HEI_BORDER;
 		}
 	}
-	else if (type == 3 || type == 4) {
-		if (bat.x > WIDTH - SIZE_BAT - 20)
+	//right player
+	if (type == 3 || type == 4) {
+		if (bat.x > (WIDTH - WID_BORDER - SIZE_BAT / 2))
 		{
 			//_lib->play_sound(board);
-			bat.x = WIDTH - SIZE_BAT - 20;
+			bat.x = (WIDTH - WID_BORDER - SIZE_BAT / 2);
 		}
-		if (bat.x < 2 * (WIDTH - SIZE_BAT - 40) / 3 + 20)
+		if (bat.x < (WIDTH + SIZE_BAT) / 2)
 		{
 			//_lib->play_sound(board);
-			bat.x = 2 * (WIDTH - SIZE_BAT - 40) / 3 + 20;
+			bat.x = (WIDTH + SIZE_BAT) / 2;
+		}
+		if (bat.y > HEIGHT - (SIZE_BAT / 2) - HEI_BORDER)
+		{
+			//_lib->play_sound(board);
+			bat.y = HEIGHT - (SIZE_BAT) / 2 - HEI_BORDER;
+		}
+		if (bat.y < (SIZE_BAT / 2) + HEI_BORDER)
+		{
+			//_lib->play_sound(board);
+			bat.y = (SIZE_BAT / 2) + HEI_BORDER;
+		}
+	}
+	//red gk
+	else if (type == 5) {
+		if (bat.x > (WIDTH / 2 + 100))
+		{
+			//_lib->play_sound(board);
+			bat.x = (WIDTH / 2 + 100);
+		}
+		if (bat.x < (WIDTH / 2 - 100 - SIZE_BAT))
+		{
+			//_lib->play_sound(board);
+			bat.x = (WIDTH / 2 - 100 - SIZE_BAT);
+		}
+		if (bat.y < (HEI_BORDER - SIZE_BAT))
+		{
+			//_lib->play_sound(board);
+			bat.y = (HEI_BORDER - SIZE_BAT);
+		}
+		if (bat.y > (HEI_BORDER + 100))
+		{
+			//_lib->play_sound(board);
+			bat.y = (HEI_BORDER + 100);
+		}
+	}
+	//blue gk
+	else if (type == 6) {
+		if (bat.x > (WIDTH / 2 + 100))
+		{
+			//_lib->play_sound(board);
+			bat.x = (WIDTH / 2 + 100);
+		}
+		if (bat.x < (WIDTH / 2 - 100 - SIZE_BAT))
+		{
+			//_lib->play_sound(board);
+			bat.x = (WIDTH / 2 - 100 - SIZE_BAT);
+		}
+		if (bat.y > (HEIGHT - HEI_BORDER - SIZE_BAT))
+		{
+			//_lib->play_sound(board);
+			bat.y = (HEIGHT - HEI_BORDER - SIZE_BAT);
+		}
+		if (bat.y < (HEIGHT - HEI_BORDER - SIZE_BAT - 100))
+		{
+			//_lib->play_sound(board);
+			bat.y = (HEIGHT - HEI_BORDER - SIZE_BAT - 100);
 		}
 	}
 
-	if (bat.y > HEIGHT - SIZE_BAT - 50)
-	{
-		//_lib->play_sound(board);
-		bat.y = HEIGHT - SIZE_BAT - 50;
-	}
-	if ( bat.y < 50)
-	{
-		//_lib->play_sound(board);
-		bat.y = 50;
-	}
 	bat.xs = bat.x - bat.xp;
 	bat.ys = bat.y - bat.yp;
 }
