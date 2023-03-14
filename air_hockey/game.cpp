@@ -175,15 +175,15 @@ void TinyFootball::confines(int type)
 	piece& bat = _pieces[type];
 	//left player
 	if (type == 1 || type == 2) {
-		if (bat.x > (WIDTH - SIZE_BAT / 2))
+		if (bat.x > (WIDTH - SIZE_BAT)/2)
 		{
 			//_lib->play_sound(board);
-			bat.x = (WIDTH - SIZE_BAT / 2);
+			bat.x = (WIDTH - SIZE_BAT) / 2;
 		}
-		if (bat.x < WID_BORDER + (SIZE_BAT / 2))
+		if (bat.x < WID_BORDER)
 		{
 			//_lib->play_sound(board);
-			bat.x = WID_BORDER + (SIZE_BAT / 2);
+			bat.x = WID_BORDER;
 		}
 		if (bat.y > HEIGHT - (SIZE_BAT / 2) - HEI_BORDER)
 		{
@@ -198,10 +198,10 @@ void TinyFootball::confines(int type)
 	}
 	//right player
 	if (type == 3 || type == 4) {
-		if (bat.x > (WIDTH - WID_BORDER - SIZE_BAT / 2))
+		if (bat.x > (WIDTH - WID_BORDER - SIZE_BAT))
 		{
 			//_lib->play_sound(board);
-			bat.x = (WIDTH - WID_BORDER - SIZE_BAT / 2);
+			bat.x = (WIDTH - WID_BORDER - SIZE_BAT);
 		}
 		if (bat.x < (WIDTH + SIZE_BAT) / 2)
 		{
