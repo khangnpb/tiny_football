@@ -23,11 +23,11 @@ void TinyFootball::begin_pos()
 	_lib->countdown();
 	_lib->draw_field();
 
-	_pieces[1] = { tbot, _pieces[1].score, wid - 50, hei / 2, wid - 50, hei / 2, 0, 0 };
-	_pieces[3] = { tbot, _pieces[3].score, wid + 50, hei / 2, wid + 50, hei / 2, 0, 0 };
+	_pieces[1] = { tbot, _pieces[1].score, wid - 50, hei / 2 + 20, wid - 50, hei / 2 + 20, 0, 0 };
+	_pieces[3] = { tbot, _pieces[3].score, wid + 50, hei / 2 - 20, wid + 50, hei / 2 - 20 , 0, 0 };
 	_pieces[5] = { tbot, _pieces[5].score, wid , hei / 2 - 50, wid , hei / 2 - 50, 0, 0 };
-	_pieces[2] = { tbot, _pieces[2].score, wid - 50, hei + hei / 2, wid - 50, hei + hei / 2, 0, 0 };
-	_pieces[4] = { tbot, _pieces[4].score, wid + 50,hei + hei / 2, wid + 50, hei + hei / 2, 0, 0 };
+	_pieces[2] = { tbot, _pieces[2].score, wid - 50, hei + hei / 2 + 20, wid - 50, hei + hei / 2 + 20, 0, 0 };
+	_pieces[4] = { tbot, _pieces[4].score, wid + 50,hei + hei / 2 - 20, wid + 50, hei + hei / 2 - 20 , 0, 0 };
 	_pieces[6] = { tbot, _pieces[6].score, wid, hei + hei / 2 + 50, wid, hei + hei / 2 + 50, 0, 0 };
 	_pieces[0] = { tball ,0, wid + 2, hei, wid + 2, hei, 0, 0 };
 }
@@ -370,8 +370,11 @@ void TinyFootball::start()
 			case play:
 				if (!_pvc)
 				{
+					_pvp = false;
 					_pvc = true;
+					setgame(tplayer, tbot);
 					begin_pos();
+
 					//draw field
 					_lib->draw_field();
 				}

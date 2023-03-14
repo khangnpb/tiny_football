@@ -125,13 +125,14 @@ Event_en GUI_SDL::checkEvent()
 		{
 			if (event.button.button == SDL_BUTTON_LEFT)
 			{
-				if (event.button.y > 200 && event.button.y < 300
-					&& event.button.x > 280 && event.button.x < 450)
+				if (event.button.y > 10 && event.button.y < 80
+					&& event.button.x > 230 && event.button.x < 310)
 					return pvp;
-				if (event.button.y > HEIGHT / 2 + 140 && event.button.y < HEIGHT / 2 + 200)
+				if (event.button.y > 720 && event.button.y < 750
+					&& event.button.x > 300 && event.button.x < 440)
 					return dific;
-				if (event.button.y > HEIGHT / 2 + 220 && event.button.y < HEIGHT / 2 + 320
-					&& event.button.x > 40 && event.button.x < 200)
+				if (event.button.y > 660 && event.button.y < 740
+					&& event.button.x > 170 && event.button.x < 250)
 					return play;
 				if (event.button.y > HEIGHT - 54 && event.button.x < 54)
 					return mus;
@@ -152,8 +153,8 @@ void GUI_SDL::draw(std::vector<piece>& pieces)
 	SDL_RenderCopy(_rend, _background, NULL, NULL);
 
 	_color = { RED_COLOR };
-	_dst.x = 450;
-	_dst.y = HEIGHT / 2 - 40;
+	_dst.x = 365;
+	_dst.y = 10;
 	_dst.h = 39;
 
 	_dst.w = 21;
@@ -163,7 +164,10 @@ void GUI_SDL::draw(std::vector<piece>& pieces)
 	SDL_FreeSurface(_ttf);
 	SDL_DestroyTexture(_text);
 
-	_dst.y = HEIGHT / 2;
+
+	_color = { BLUE_COLOR };
+	_dst.y = 8;
+	_dst.x = 405 ;
 	_ttf = TTF_RenderText_Solid(_font, std::to_string(pieces[6].score).c_str(), _color);
 	_text = SDL_CreateTextureFromSurface(_rend, _ttf);
 	SDL_RenderCopy(_rend, _text, 0, &_dst);
@@ -210,7 +214,7 @@ void GUI_SDL::new_game(bool hard)
 	SDL_DestroyTexture(_background);
 	SDL_RenderClear(_rend);
 	SDL_RenderCopy(_rend, _background, NULL, NULL);
-	_background = IMG_LoadTexture(_rend, (hard ? "res/HARD.png" : "res/NORM.png"));
+	_background = IMG_LoadTexture(_rend, (hard ? "res/hard1.png" : "res/norm1.png"));
 	if (!_background)
 	{
 		std::cerr << "IMG error: " << IMG_GetError() << std::endl;
@@ -245,7 +249,7 @@ void GUI_SDL::countdown()
 void GUI_SDL::draw_field()
 {
 	SDL_DestroyTexture(_background);
-	_background = IMG_LoadTexture(_rend, "res/field1.jpg");
+	_background = IMG_LoadTexture(_rend, "res/field1.png");
 	if (!_background)
 	{
 		std::cerr << "IMG error: " << IMG_GetError() << std::endl;
