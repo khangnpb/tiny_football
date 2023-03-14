@@ -23,7 +23,7 @@ void TinyFootball::begin_pos()
 	_lib->countdown();
 	_lib->draw_field();
 
-	_pieces[0] = { tbot, _pieces[0].score, wid - 50, hei / 2, wid - 50, hei / 2, 0, 0 };
+	_pieces[1] = { tbot, _pieces[1].score, wid - 50, hei / 2, wid - 50, hei / 2, 0, 0 };
 	_pieces[3] = { tbot, _pieces[3].score, wid + 50, hei / 2, wid + 50, hei / 2, 0, 0 };
 	_pieces[5] = { t2, _pieces[5].score, wid , hei / 2 - 50, wid , hei / 2 - 50, 0, 0 };
 	_pieces[2] = { tbot, _pieces[2].score, wid - 50, hei + hei / 2, wid - 50, hei + hei / 2, 0, 0 };
