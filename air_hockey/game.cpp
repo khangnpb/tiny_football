@@ -215,7 +215,6 @@ void TinyFootball::confines(int type)
 		}
 	}
 
-
 	if (bat.y > HEIGHT - SIZE_BAT - 50)
 	{
 		//_lib->play_sound(board);
