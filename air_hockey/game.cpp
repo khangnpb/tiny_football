@@ -231,10 +231,10 @@ void TinyFootball::confines(int type)
 			//_lib->play_sound(board);
 			bat.x = (WIDTH / 2 - 100 - SIZE_BAT);
 		}
-		if (bat.y < (HEI_BORDER - SIZE_BAT))
+		if (bat.y < (HEI_BORDER))
 		{
 			//_lib->play_sound(board);
-			bat.y = (HEI_BORDER - SIZE_BAT);
+			bat.y = (HEI_BORDER);
 		}
 		if (bat.y > (HEI_BORDER + 100))
 		{
