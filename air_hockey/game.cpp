@@ -58,8 +58,8 @@ void TinyFootball::hit_ball(int type)
 				double tSpeed = ball.xs * sin + ball.ys * cos;
 				nSpeed = -nSpeed;
 
-				ball.xs = tSpeed * sin  + nSpeed * cos + bat.xs;
-				ball.ys = tSpeed * cos - nSpeed * sin + bat.ys;
+				ball.xs = tSpeed * sin  + nSpeed * cos + bat.xs*2;
+				ball.ys = tSpeed * cos - nSpeed * sin + bat.ys*2;
 
 				while (pow(MAX_SPEED, 2) < pow(ball.xs, 2) + pow(ball.ys, 2))
 				{
@@ -103,7 +103,7 @@ void TinyFootball::behav_ball()
 	if (ball.y > hei || ball.y < 55)
 	{
 		//goal
-		if (ball.x > 170 && ball.x < 262)
+		if (ball.x > 180 && ball.x < 262)
 		{
 			_pieces[(ball.y > hei ? 5 : 6)].score++;
 			ball.y = (ball.y > hei ? hei : 55);
@@ -410,14 +410,14 @@ void TinyFootball::start()
 					_pieces[player[1]].yp = _pieces[player[1]].y;
 					_pieces[player[1]].y -= (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
 					//w_pressed = true;
-					std::cout << "up1 \n";
+					//std::cout << "up1 \n";
 					if (currentKeyStates[SDL_SCANCODE_D])
 					{
 						//moving diagonally up-right
 						_pieces[player[1]].xp = _pieces[player[1]].x;
 						_pieces[player[1]].yp = _pieces[player[1]].y;
 						_pieces[player[1]].x += (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
-						std::cout << "up-right1 \n";
+						//std::cout << "up-right1 \n";
 					}
 					else if (currentKeyStates[SDL_SCANCODE_A])
 					{
@@ -425,7 +425,7 @@ void TinyFootball::start()
 						_pieces[player[1]].xp = _pieces[player[1]].x;
 						_pieces[player[1]].yp = _pieces[player[1]].y;
 						_pieces[player[1]].x -= (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
-						std::cout << "up-left1 \n";
+						//std::cout << "up-left1 \n";
 					}
 					else if (currentKeyStates[SDL_SCANCODE_J]) {
 						_pieces[player[1]].type = tbot;
@@ -437,13 +437,13 @@ void TinyFootball::start()
 						_pieces[player[1]].type = tbot;
 						player[1] = 6;
 						_pieces[player[1]].type = tplayer;
-						std::cout << "change player[1][6] \n";
+						//std::cout << "change player[1][6] \n";
 					}
 					else if (currentKeyStates[SDL_SCANCODE_L]) {
 						_pieces[player[1]].type = tbot;
 						player[1] = 4;
 						_pieces[player[1]].type = tplayer;
-						std::cout << "change player[1] \n";
+						//std::cout << "change player[1] \n";
 					}
 				}
 				else if (currentKeyStates[SDL_SCANCODE_D])
@@ -452,14 +452,14 @@ void TinyFootball::start()
 					_pieces[player[1]].yp = _pieces[player[1]].y;
 					_pieces[player[1]].x += (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
 					//d_pressed = true;
-					std::cout << "right1 \n";
+					//std::cout << "right1 \n";
 					if (currentKeyStates[SDL_SCANCODE_W])
 					{
 						//moving diagonally up-right
 						_pieces[player[1]].xp = _pieces[player[1]].x;
 						_pieces[player[1]].yp = _pieces[player[1]].y;
 						_pieces[player[1]].y -= (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
-						std::cout << "up-right1 \n";
+						//std::cout << "up-right1 \n";
 					}
 					else if (currentKeyStates[SDL_SCANCODE_S])
 					{
@@ -467,25 +467,25 @@ void TinyFootball::start()
 						_pieces[player[1]].xp = _pieces[player[1]].x;
 						_pieces[player[1]].yp = _pieces[player[1]].y;
 						_pieces[player[1]].y += (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
-						std::cout << "down-right1 \n";
+						//std::cout << "down-right1 \n";
 					}
 					else if (currentKeyStates[SDL_SCANCODE_J]) {
 						_pieces[player[1]].type = tbot;
 						player[1] = 2;
 						_pieces[player[1]].type = tplayer;
-						std::cout << "change player[1][2] \n";
+						//std::cout << "change player[1][2] \n";
 					}
 					else if (currentKeyStates[SDL_SCANCODE_K]) {
 						_pieces[player[1]].type = tbot;
 						player[1] = 6;
 						_pieces[player[1]].type = tplayer;
-						std::cout << "change player[1][6] \n";
+						//std::cout << "change player[1][6] \n";
 					}
 					else if (currentKeyStates[SDL_SCANCODE_L]) {
 						_pieces[player[1]].type = tbot;
 						player[1] = 4;
 						_pieces[player[1]].type = tplayer;
-						std::cout << "change player[1][1] \n";
+						//std::cout << "change player[1][1] \n";
 					}
 				}
 				else if (currentKeyStates[SDL_SCANCODE_S])
@@ -494,14 +494,14 @@ void TinyFootball::start()
 					_pieces[player[1]].yp = _pieces[player[1]].y;
 					_pieces[player[1]].y += (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
 					//s_pressed = true;
-					std::cout << "down1 \n";
+					//std::cout << "down1 \n";
 					if (currentKeyStates[SDL_SCANCODE_D])
 					{
 						//moving diagonally down-right
 						_pieces[player[1]].xp = _pieces[player[1]].x;
 						_pieces[player[1]].yp = _pieces[player[1]].y;
 						_pieces[player[1]].x += (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
-						std::cout << "down-right1 \n";
+						//std::cout << "down-right1 \n";
 					}
 					else if (currentKeyStates[SDL_SCANCODE_A])
 					{
@@ -509,25 +509,25 @@ void TinyFootball::start()
 						_pieces[player[1]].xp = _pieces[player[1]].x;
 						_pieces[player[1]].yp = _pieces[player[1]].y;
 						_pieces[player[1]].x -= (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
-						std::cout << "down-left1 \n";
+						//std::cout << "down-left1 \n";
 					}
 					else if (currentKeyStates[SDL_SCANCODE_J]) {
 						_pieces[player[1]].type = tbot;
 						player[1] = 2;
 						_pieces[player[1]].type = tplayer;
-						std::cout << "change player[2] \n";
+						//std::cout << "change player[2] \n";
 					}
 					else if (currentKeyStates[SDL_SCANCODE_K]) {
 						_pieces[player[1]].type = tbot;
 						player[1] = 6;
 						_pieces[player[1]].type = tplayer;
-						std::cout << "change player[6] \n";
+						//std::cout << "change player[6] \n";
 					}
 					else if (currentKeyStates[SDL_SCANCODE_L]) {
 						_pieces[player[1]].type = tbot;
 						player[1] = 4;
 						_pieces[player[1]].type = tplayer;
-						std::cout << "change player[1] \n";
+						//std::cout << "change player[1] \n";
 					}
 				}
 				else if (currentKeyStates[SDL_SCANCODE_A])
@@ -536,14 +536,14 @@ void TinyFootball::start()
 					_pieces[player[1]].yp = _pieces[player[1]].y;
 					_pieces[player[1]].x -= (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
 					//a_pressed = true;
-					std::cout << "left1 \n";
+					//std::cout << "left1 \n";
 					if (currentKeyStates[SDL_SCANCODE_W])
 					{
 						//moving diagonally up-left
 						_pieces[player[1]].xp = _pieces[player[1]].x;
 						_pieces[player[1]].yp = _pieces[player[1]].y;
 						_pieces[player[1]].y -= (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
-						std::cout << "up-left1 \n";
+						//std::cout << "up-left1 \n";
 					}
 					else if (currentKeyStates[SDL_SCANCODE_S])
 					{
@@ -551,44 +551,44 @@ void TinyFootball::start()
 						_pieces[player[1]].xp = _pieces[player[1]].x;
 						_pieces[player[1]].yp = _pieces[player[1]].y;
 						_pieces[player[1]].y += (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
-						std::cout << "down-left1 \n";
+						//std::cout << "down-left1 \n";
 					}
 					else if (currentKeyStates[SDL_SCANCODE_J]) {
 						_pieces[player[1]].type = tbot;
 						player[1] = 2;
 						_pieces[player[1]].type = tplayer;
-						std::cout << "change player[1][2] \n";
+						//std::cout << "change player[1][2] \n";
 					}
 					else if (currentKeyStates[SDL_SCANCODE_K]) {
 						_pieces[player[1]].type = tbot;
 						player[1] = 6;
 						_pieces[player[1]].type = tplayer;
-						std::cout << "change player[6] \n";
+						//std::cout << "change player[6] \n";
 					}
 					else if (currentKeyStates[SDL_SCANCODE_L]) {
 						_pieces[player[1]].type = tbot;
 						player[1] = 4;
 						_pieces[player[1]].type = tplayer;
-						std::cout << "change player \n";
+						//std::cout << "change player \n";
 					}
 				}
 				else if (currentKeyStates[SDL_SCANCODE_J]) {
 					_pieces[player[1]].type = tbot;
 					player[1] = 2;
 					_pieces[player[1]].type = tplayer;
-					std::cout << "change player[2] \n";
+					//std::cout << "change player[2] \n";
 				}
 				else if (currentKeyStates[SDL_SCANCODE_K]) {
 					_pieces[player[1]].type = tbot;
 					player[1] = 6;
 					_pieces[player[1]].type = tplayer;
-					std::cout << "change player[6] \n";
+					//std::cout << "change player[6] \n";
 				}
 				else if (currentKeyStates[SDL_SCANCODE_L]) {
 					_pieces[player[1]].type = tbot;
 					player[1] = 4;
 					_pieces[player[1]].type = tplayer;
-					std::cout << "change player[4] \n";
+					//std::cout << "change player[4] \n";
 				}
 
 				if (_pvp) {
@@ -598,14 +598,14 @@ void TinyFootball::start()
 						_pieces[player[0]].yp = _pieces[player[0]].y;
 						_pieces[player[0]].y -= (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
 						//w_pressed = true;
-						std::cout << "up1 \n";
+						//std::cout << "up1 \n";
 						if (currentKeyStates[SDL_SCANCODE_DOWN])
 						{
 							//moving diagonally up-right
 							_pieces[player[0]].xp = _pieces[player[0]].x;
 							_pieces[player[0]].yp = _pieces[player[0]].y;
 							_pieces[player[0]].x += (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
-							std::cout << "up-right1 \n";
+							//std::cout << "up-right1 \n";
 						}
 						else if (currentKeyStates[SDL_SCANCODE_LEFT])
 						{
@@ -613,25 +613,25 @@ void TinyFootball::start()
 							_pieces[player[0]].xp = _pieces[player[0]].x;
 							_pieces[player[0]].yp = _pieces[player[0]].y;
 							_pieces[player[0]].x -= (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
-							std::cout << "up-left1 \n";
+							//std::cout << "up-left1 \n";
 						}
 						else if (currentKeyStates[SDL_SCANCODE_KP_1]) {
 							_pieces[player[0]].type = tbot;
 							player[0] = 1;
 							_pieces[player[0]].type = tplayer;
-							std::cout << "change player[0][2] \n";
+							//std::cout << "change player[0][2] \n";
 						}
 						else if (currentKeyStates[SDL_SCANCODE_KP_2]) {
 							_pieces[player[0]].type = tbot;
 							player[0] = 5;
 							_pieces[player[0]].type = tplayer;
-							std::cout << "change player[0][6] \n";
+							//std::cout << "change player[0][6] \n";
 						}
 						else if (currentKeyStates[SDL_SCANCODE_KP_3]) {
 							_pieces[player[0]].type = tbot;
 							player[0] = 3;
 							_pieces[player[0]].type = tplayer;
-							std::cout << "change player[0] \n";
+							//std::cout << "change player[0] \n";
 						}
 					}
 					else if (currentKeyStates[SDL_SCANCODE_RIGHT])
@@ -640,14 +640,14 @@ void TinyFootball::start()
 						_pieces[player[0]].yp = _pieces[player[0]].y;
 						_pieces[player[0]].x += (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
 						//d_pressed = true;
-						std::cout << "right1 \n";
+						//std::cout << "right1 \n";
 						if (currentKeyStates[SDL_SCANCODE_UP])
 						{
 							//moving diagonally up-right
 							_pieces[player[0]].xp = _pieces[player[0]].x;
 							_pieces[player[0]].yp = _pieces[player[0]].y;
 							_pieces[player[0]].y -= (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
-							std::cout << "up-right1 \n";
+							//std::cout << "up-right1 \n";
 						}
 						else if (currentKeyStates[SDL_SCANCODE_DOWN])
 						{
@@ -655,25 +655,25 @@ void TinyFootball::start()
 							_pieces[player[0]].xp = _pieces[player[0]].x;
 							_pieces[player[0]].yp = _pieces[player[0]].y;
 							_pieces[player[0]].y += (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
-							std::cout << "down-right1 \n";
+							//std::cout << "down-right1 \n";
 						}
 						else if (currentKeyStates[SDL_SCANCODE_KP_1]) {
 							_pieces[player[0]].type = tbot;
 							player[0] = 1;
 							_pieces[player[0]].type = tplayer;
-							std::cout << "change player[0][2] \n";
+							//std::cout << "change player[0][2] \n";
 						}
 						else if (currentKeyStates[SDL_SCANCODE_KP_2]) {
 							_pieces[player[0]].type = tbot;
 							player[0] = 5;
 							_pieces[player[0]].type = tplayer;
-							std::cout << "change player[0][6] \n";
+							//std::cout << "change player[0][6] \n";
 						}
 						else if (currentKeyStates[SDL_SCANCODE_KP_3]) {
 							_pieces[player[0]].type = tbot;
 							player[0] = 3;
 							_pieces[player[0]].type = tplayer;
-							std::cout << "change player[0] \n";
+							//std::cout << "change player[0] \n";
 						}
 					}
 					else if (currentKeyStates[SDL_SCANCODE_DOWN])
@@ -682,14 +682,14 @@ void TinyFootball::start()
 						_pieces[player[0]].yp = _pieces[player[0]].y;
 						_pieces[player[0]].y += (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
 						//s_pressed = true;
-						std::cout << "down1 \n";
+						//std::cout << "down1 \n";
 						if (currentKeyStates[SDL_SCANCODE_RIGHT])
 						{
 							//moving diagonally down-right
 							_pieces[player[0]].xp = _pieces[player[0]].x;
 							_pieces[player[0]].yp = _pieces[player[0]].y;
 							_pieces[player[0]].x += (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
-							std::cout << "down-right1 \n";
+							//std::cout << "down-right1 \n";
 						}
 						else if (currentKeyStates[SDL_SCANCODE_LEFT])
 						{
@@ -697,25 +697,25 @@ void TinyFootball::start()
 							_pieces[player[0]].xp = _pieces[player[0]].x;
 							_pieces[player[0]].yp = _pieces[player[0]].y;
 							_pieces[player[0]].x -= (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
-							std::cout << "down-left1 \n";
+							//std::cout << "down-left1 \n";
 						}
 						else if (currentKeyStates[SDL_SCANCODE_KP_1]) {
 							_pieces[player[0]].type = tbot;
 							player[0] = 1;
 							_pieces[player[0]].type = tplayer;
-							std::cout << "change player[0][2] \n";
+							//std::cout << "change player[0][2] \n";
 						}
 						else if (currentKeyStates[SDL_SCANCODE_KP_2]) {
 							_pieces[player[0]].type = tbot;
 							player[0] = 5;
 							_pieces[player[0]].type = tplayer;
-							std::cout << "change player[0][6] \n";
+							//std::cout << "change player[0][6] \n";
 						}
 						else if (currentKeyStates[SDL_SCANCODE_KP_3]) {
 							_pieces[player[0]].type = tbot;
 							player[0] = 3;
 							_pieces[player[0]].type = tplayer;
-							std::cout << "change player[0] \n";
+							//std::cout << "change player[0] \n";
 						}
 					}
 					else if (currentKeyStates[SDL_SCANCODE_LEFT])
@@ -724,14 +724,14 @@ void TinyFootball::start()
 						_pieces[player[0]].yp = _pieces[player[0]].y;
 						_pieces[player[0]].x -= (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
 						//a_pressed = true;
-						std::cout << "left1 \n";
+						//std::cout << "left1 \n";
 						if (currentKeyStates[SDL_SCANCODE_UP])
 						{
 							//moving diagonally up-left
 							_pieces[player[0]].xp = _pieces[player[0]].x;
 							_pieces[player[0]].yp = _pieces[player[0]].y;
 							_pieces[player[0]].y -= (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
-							std::cout << "up-left1 \n";
+							//std::cout << "up-left1 \n";
 						}
 						else if (currentKeyStates[SDL_SCANCODE_DOWN])
 						{
@@ -739,44 +739,44 @@ void TinyFootball::start()
 							_pieces[player[0]].xp = _pieces[player[0]].x;
 							_pieces[player[0]].yp = _pieces[player[0]].y;
 							_pieces[player[0]].y += (_hard ? MAX_SPEED / 3 : MAX_SPEED / 4);
-							std::cout << "down-left1 \n";
+							//std::cout << "down-left1 \n";
 						}
 						else if (currentKeyStates[SDL_SCANCODE_KP_1]) {
 							_pieces[player[0]].type = tbot;
 							player[0] = 1;
 							_pieces[player[0]].type = tplayer;
-							std::cout << "change player[0][2] \n";
+							//std::cout << "change player[0][2] \n";
 						}
 						else if (currentKeyStates[SDL_SCANCODE_KP_2]) {
 							_pieces[player[0]].type = tbot;
 							player[0] = 5;
 							_pieces[player[0]].type = tplayer;
-							std::cout << "change player[0][6] \n";
+							//std::cout << "change player[0][6] \n";
 						}
 						else if (currentKeyStates[SDL_SCANCODE_KP_3]) {
 							_pieces[player[0]].type = tbot;
 							player[0] = 3;
 							_pieces[player[0]].type = tplayer;
-							std::cout << "change player[0] \n";
+							//std::cout << "change player[0] \n";
 						}
 					}
 					else if (currentKeyStates[SDL_SCANCODE_KP_1]) {
 						_pieces[player[0]].type = tbot;
 						player[0] = 1;
 						_pieces[player[0]].type = tplayer;
-						std::cout << "change player[0][2] \n";
+						//std::cout << "change player[0][2] \n";
 					}
 					else if (currentKeyStates[SDL_SCANCODE_KP_2]) {
 						_pieces[player[0]].type = tbot;
 						player[0] = 5;
 						_pieces[player[0]].type = tplayer;
-						std::cout << "change player[0][6] \n";
+						//std::cout << "change player[0][6] \n";
 					}
 					else if (currentKeyStates[SDL_SCANCODE_KP_3]) {
 						_pieces[player[0]].type = tbot;
 						player[0] = 3;
 						_pieces[player[0]].type = tplayer;
-						std::cout << "change player[0] \n";
+						//std::cout << "change player[0] \n";
 					}
 				}
 			}
