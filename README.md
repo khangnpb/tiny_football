@@ -12,18 +12,18 @@
 - quit the game - "q" or closed the window
 - on/off sound - "m" or LMB on the speaker
 
-##### only on the main menu:
+##### Only on the main menu:
 
 - start the game - LMB on 'START'
 - change difficulty - LMB on the difficulty
 
-##### only during the game:
+##### Only during the game:
 
 - pause - "p"
 - return to the main menu - RMB or "Esc"
 - control the bit-player
   - WASD for player 1
-  - UP DƠWN LEFT RIGHT for player 2
+  - UP DOWN LEFT RIGHT for player 2
 
 ### Sample
 
